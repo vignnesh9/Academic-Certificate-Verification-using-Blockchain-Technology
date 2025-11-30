@@ -1,0 +1,4 @@
+Python 3.8+
+Flask
+ECDSA key generation, signing & verification
+SHA‑256 hashing
