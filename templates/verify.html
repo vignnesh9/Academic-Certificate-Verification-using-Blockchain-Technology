@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Certificate</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #4f8cff 0, #001b3f 45%, #000814 100%);
+      color: #1f2933;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 18px;
+      padding: 30px 28px 28px;
+      max-width: 620px;
+      width: 90%;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    h2 {
+      font-size: 26px;
+      text-align: center;
+      font-weight: 700;
+      color: #0052cc;
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      text-align: center;
+      color: #4b5563;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input[type="file"],
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 14px;
+      transition: border 0.3s;
+    }
+
+    input[type="file"]:hover,
+    input[type="text"]:focus {
+      border-color: #0052cc;
+      outline: none;
+    }
+
+    button {
+      background: #0052cc;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 30px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 14px rgba(0, 82, 204, 0.38);
+    }
+
+    button:hover {
+      background: #0066ff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 22px rgba(0, 82, 204, 0.55);
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .back-link a {
+      text-decoration: none;
+      color: #0052cc;
+      font-size: 13px;
+      transition: color 0.3s;
+    }
+
+    .back-link a:hover {
+      color: #0a58ca;
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 640px) {
+      input[type="file"], input[type="text"] {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Verify Certificate</h2>
+    <p class="subtitle">Upload your certificate file or enter its hash to verify authenticity.</p>
+
+    <form action="/verify" method="post" enctype="multipart/form-data">
+      <div>
+        <label for="certificate_file">Upload certificate file:</label>
+        <input type="file" name="certificate_file" id="certificate_file">
+      </div>
+
+      <div>
+        <label for="cert_hash">Or paste certificate hash:</label>
+        <input type="text" name="cert_hash" id="cert_hash" placeholder="Enter certificate hash here">
+      </div>
+
+      <button type="submit">Verify Certificate</button>
+    </form>
+
+    <div class="back-link">
+      <a href="/">← Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>

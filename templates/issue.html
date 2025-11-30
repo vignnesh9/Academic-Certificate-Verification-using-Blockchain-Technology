@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Issue Certificate</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #4f8cff 0, #001b3f 45%, #000814 100%);
+      color: #1f2933;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 18px;
+      padding: 35px 28px 28px;
+      max-width: 700px;
+      width: 90%;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    h2 {
+      font-size: 26px;
+      text-align: center;
+      font-weight: 700;
+      color: #0052cc;
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      text-align: center;
+      color: #4b5563;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="file"],
+    textarea {
+      width: 85%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 14px;
+      transition: border 0.3s;
+      resize: vertical;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus,
+    input[type="file"]:hover {
+      border-color: #0052cc;
+      outline: none;
+    }
+
+    button {
+      background: #0052cc;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 32px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 14px rgba(0, 82, 204, 0.38);
+    }
+
+    button:hover {
+      background: #0066ff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 22px rgba(0, 82, 204, 0.55);
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .back-link a {
+      text-decoration: none;
+      color: #0052cc;
+      font-size: 13px;
+      transition: color 0.3s;
+    }
+
+    .back-link a:hover {
+      color: #0a58ca;
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 640px) {
+      input[type="text"], textarea, input[type="file"] {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Issue Certificate</h2>
+    <p class="subtitle">Enter the required information below to issue a new academic certificate.</p>
+
+    <form action="/issue" method="post" enctype="multipart/form-data">
+      <div>
+        <label for="issuer">Issuer Name:</label>
+        <input type="text" name="issuer" id="issuer" required>
+      </div>
+
+      <div>
+        <label for="issuer_pubkey">Issuer Public Key:</label>
+        <textarea name="issuer_pubkey" id="issuer_pubkey" rows="5" placeholder="Paste public key here"></textarea>
+      </div>
+
+      <div>
+        <label for="issuer_private_pem">Issuer Private Key:</label>
+        <textarea name="issuer_private_pem" id="issuer_private_pem" rows="5" placeholder="Paste private key here"></textarea>
+      </div>
+
+      <div>
+        <label for="student_name">Student Name:</label>
+        <input type="text" name="student_name" id="student_name" required>
+      </div>
+
+      <div>
+        <label for="student_id">Student ID:</label>
+        <input type="text" name="student_id" id="student_id" required>
+      </div>
+
+      <div>
+        <label for="degree">Degree / Title:</label>
+        <input type="text" name="degree" id="degree" required>
+      </div>
+
+      <div>
+        <label for="certificate_file">Certificate File (PDF/Image):</label>
+        <input type="file" name="certificate_file" id="certificate_file" required>
+      </div>
+
+      <button type="submit">Issue Certificate</button>
+    </form>
+
+    <div class="back-link">
+      <a href="/">← Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>
